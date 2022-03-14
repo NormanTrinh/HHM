@@ -116,9 +116,9 @@ def PA(mapp, input):    # ok
     return Image.fromarray(im)
 
 
-imsrc = Image.open('./6to7.png')
-imtgt = Image.open('./7to6.png')
-im = Image.open('./7.png')
+imsrc = Image.open('./6to7/6to7.png')
+imtgt = Image.open('./6to7/7to6.png')
+im = Image.open('./6to7/7.png')
 
 start = time.time()
 mapp = HHM(imtgt, imsrc)
@@ -127,7 +127,7 @@ print('map time: ', time.time()-start)
 start = time.time()
 correct = PA(mapp, im)
 print('color adjustment time: ', time.time()-start)
-correct.save('./output2test.png')
+correct.save('./6to7/output7test.png')
 
 # import cv2
 # from skimage.metrics import structural_similarity as ssim
