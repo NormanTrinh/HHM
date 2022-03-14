@@ -21,7 +21,7 @@ def Th(na, pixel_num):
     return threshold
 
 
-def HHM(im_tgt, im_src):    # read with pillow
+def HHM(im_tgt, im_src):    # doc bang pillow
     W, H = im_src.size
     pixel_num = H*W
     im_tgt.resize([W, H])
@@ -50,8 +50,8 @@ def HHM(im_tgt, im_src):    # read with pillow
     threshold_b = Th(nb, pixel_num)
     for c in range(3):
         gradient = np.zeros((c+1, 257))
-        srcMax = np.max(np.array(im_src)[:, :, c])
-        srcMin = np.min(np.array(im_src)[:, :, c])
+        srcMax = np.max(np.array(im_src)[:, :, c])+1
+        srcMin = np.min(np.array(im_src)[:, :, c])+1
 
         for a in range(256):
             b = 0
@@ -64,7 +64,7 @@ def HHM(im_tgt, im_src):    # read with pillow
                 b = srcMin
             mapp[c, a] = b+1
             if na[c, a] < threshold_a[c]:
-                mapp[c, a] = np.nan     
+                mapp[c, a] = np.nan
                 index[c, a] = 0
             if nb[c, b] < threshold_b[c]:
                 mapp[c, a] = np.nan
@@ -75,7 +75,8 @@ def HHM(im_tgt, im_src):    # read with pillow
         index[c, 255] = 1
     gradient[:, 1:256] = index[:, 1:256]-index[:, 0:255]
     gradient[:, 0] = 0
-    # print(np.sum(gradient))
+
+    # print(mapp)
     region = np.zeros((3, 20, 2)).astype(int)
     XX = np.zeros((3, 20, 2)).astype(int)
     YY = np.zeros((3, 20, 2)).astype(int)
@@ -93,32 +94,31 @@ def HHM(im_tgt, im_src):    # read with pillow
             YY[c, num, 0] = mapp[c, XX[c, num, 0]]
             XX[c, num, 1] = region[c, num, 1]+1
             YY[c, num, 1] = mapp[c, XX[c, num, 1]]
+
             p = np.polyfit(XX[c, num, :], YY[c, num, :], 1)
             for a in range(region[c, num, 0], region[c, num, 1]+1):
                 mapp[c, a] = np.polyval(p, a)
 
-    # print(mapp)
     x = [i for i in range(256)]
-    # smooth with savgol_filter (temporary use)
+    # smooth bang savgol_filter (dung tam)
     mapp[0, :] = savgol_filter(mapp[0, x], 15, 0)
     mapp[1, :] = savgol_filter(mapp[1, x], 15, 0)
     mapp[2, :] = savgol_filter(mapp[2, x], 15, 0)
     return mapp
 
 
-def PA(mapp, input):    # not good
+def PA(mapp, input):    # ok
     w, h = input.size
     im = np.array(input)
     for c in range(3):
-        for i in range(h):
-            for j in range(w):
-                im[i, j, c] = mapp[c, im[i, j, c]]-1
+        im[0:h, 0:w, c] = mapp[c, im[0:h, 0:w, c]]-1
+
     return Image.fromarray(im)
 
 
-imsrc = Image.open('./6to7/6to7.png')
-imtgt = Image.open('./6to7/7to6.png')
-im = Image.open('./6to7/7.png')
+imsrc = Image.open('./6to7.png')
+imtgt = Image.open('./7to6.png')
+im = Image.open('./7.png')
 
 start = time.time()
 mapp = HHM(imtgt, imsrc)
@@ -126,5 +126,22 @@ print('map time: ', time.time()-start)
 
 start = time.time()
 correct = PA(mapp, im)
-print('correct time: ', time.time()-start)
-correct.save('./6to7/output7test.png')
+print('color adjustment time: ', time.time()-start)
+correct.save('./output2test.png')
+
+# import cv2
+# from skimage.metrics import structural_similarity as ssim
+# img_before = cv2.imread('./7.png')
+# img_before = cv2.cvtColor(img_before, cv2.COLOR_BGR2GRAY)
+# img_after = cv2.imread('./output7test.png')
+# img_after = cv2.cvtColor(img_after, cv2.COLOR_BGR2GRAY)
+
+# print('SSIM (after color correction):', ssim(img_before, img_after))
+
+# from PIL import ImageStat
+# def brightness( im_file ):
+#    im = Image.open(im_file).convert('L')
+#    stat = ImageStat.Stat(im)
+#    return stat.rms[0]
+
+# print(brightness('./output7test.png'))
