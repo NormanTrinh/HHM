@@ -21,7 +21,7 @@ def Th(na, pixel_num):
     return threshold
 
 
-def HHM(im_tgt, im_src):    # doc bang pillow
+def HHM(im_tgt, im_src):    # read image with pillow
     W, H = im_src.size
     pixel_num = H*W
     im_tgt.resize([W, H])
@@ -100,14 +100,14 @@ def HHM(im_tgt, im_src):    # doc bang pillow
                 mapp[c, a] = np.polyval(p, a)
 
     x = [i for i in range(256)]
-    # smooth bang savgol_filter (dung tam)
-    mapp[0, :] = savgol_filter(mapp[0, x], 15, 0)
-    mapp[1, :] = savgol_filter(mapp[1, x], 15, 0)
-    mapp[2, :] = savgol_filter(mapp[2, x], 15, 0)
+    # smooth with savgol_filter
+    mapp[0, :] = savgol_filter(mapp[0, x], 15, 1)
+    mapp[1, :] = savgol_filter(mapp[1, x], 15, 1)
+    mapp[2, :] = savgol_filter(mapp[2, x], 15, 1)
     return mapp
 
 
-def PA(mapp, input):    # ok
+def PA(mapp, input):
     w, h = input.size
     im = np.array(input)
     for c in range(3):
@@ -128,20 +128,3 @@ start = time.time()
 correct = PA(mapp, im)
 print('color adjustment time: ', time.time()-start)
 correct.save('./6to7/output7test.png')
-
-# import cv2
-# from skimage.metrics import structural_similarity as ssim
-# img_before = cv2.imread('./7.png')
-# img_before = cv2.cvtColor(img_before, cv2.COLOR_BGR2GRAY)
-# img_after = cv2.imread('./output7test.png')
-# img_after = cv2.cvtColor(img_after, cv2.COLOR_BGR2GRAY)
-
-# print('SSIM (after color correction):', ssim(img_before, img_after))
-
-# from PIL import ImageStat
-# def brightness( im_file ):
-#    im = Image.open(im_file).convert('L')
-#    stat = ImageStat.Stat(im)
-#    return stat.rms[0]
-
-# print(brightness('./output7test.png'))
