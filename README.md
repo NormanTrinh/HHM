@@ -1,3 +1,5 @@
+# `Converted to python`
+
 # Array camera color correction
 `main.m`:   demo function of two images color correction, input: /6to7
 
@@ -11,4 +13,4 @@
 
 /data: N images and their overlaps, example data is in data1.rar and data2.rar
 
-`run.py`: written in python
+`run.py`: same as `main.m`
