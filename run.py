@@ -77,9 +77,9 @@ def HHM(im_tgt, im_src):    # read image with pillow
     gradient[:, 0] = 0
 
     # print(mapp)
-    region = np.zeros((3, 20, 2)).astype(int)
-    XX = np.zeros((3, 20, 2)).astype(int)
-    YY = np.zeros((3, 20, 2)).astype(int)
+    region = np.zeros((3, 256, 2)).astype(int)
+    XX = np.zeros((3, 256, 2)).astype(int)
+    YY = np.zeros((3, 256, 2)).astype(int)
 
     for c in range(3):
         n_re = -1
