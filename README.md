@@ -1,9 +1,6 @@
 # `Converted to python`
 
-# Paper
-```
-https://box.nju.edu.cn/f/ef598961b2bf4c1a8dae/
-```
+# Paper: `paper.pdf`
 
 # Array camera color correction
 `main.m`:   demo function of two images color correction, input: /6to7
