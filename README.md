@@ -1,6 +1,6 @@
 # `Converted to python`
 
-# Paper: `paper.pdf`
+# Paper: [paper.pdf](paper.pdf)
 
 # Array camera color correction
 [main.m](main.m):   demo function of two images color correction, input: /6to7
