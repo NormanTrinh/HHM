@@ -127,4 +127,4 @@ if __name__ == '__main__':
     start = time.time()
     correct = PA(mapp, im)
     print('color adjustment time: ', time.time()-start)
-    correct.save('./6to7/output7test.png')
+    correct.save('./6to7/output7.png')
