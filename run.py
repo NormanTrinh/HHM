@@ -34,7 +34,7 @@ def HHM(im_tgt, im_src):    # read image with pillow
     Sb = np.zeros((3, 256))
 
     for c in range(3):
-        na[c, :] = Image.fromarray(np.array(im_tgt)[:, :, c]).histogram()
+        na[c, :] = Image.fromarray(np.array(im_tgt)[:, :, c]).histogram()   # faster than np.histogram() aprox 0.02 s
         nb[c, :] = Image.fromarray(np.array(im_src)[:, :, c]).histogram()
 
     Sa[:, 0] = na[:, 0]
