@@ -14,3 +14,6 @@
 /data: N images and their overlaps, example data is in data1.rar and data2.rar
 
 [run.py](run.py): same as `main.m`
+
+# Note
+- Results have been tested on Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz
