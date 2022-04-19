@@ -16,4 +16,4 @@
 [run.py](run.py): same as `main.m`
 
 # Note
-- Results have been tested on Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz
+- Results have been tested on Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz, Python = 3.9
