@@ -15,5 +15,15 @@
 
 [run.py](run.py): same as `main.m`
 
+# How to run
+```
+conda create -n py39 python=3.9
+
+conda activate py39
+
+pip install -r requirements.txt
+
+python run.py
+```
 # Note
 - Results have been tested on Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz, Python = 3.9
