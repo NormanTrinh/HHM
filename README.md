@@ -26,4 +26,4 @@ pip install -r requirements.txt
 python run.py
 ```
 # Note
-- Results have been tested on Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz, Python = 3.9
+- Results have been tested on Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz
