@@ -15,7 +15,7 @@
 
 [run.py](run.py): same as `main.m`
 
-# How to run
+# Terminal
 ```
 conda create -n py39 python=3.9
 
