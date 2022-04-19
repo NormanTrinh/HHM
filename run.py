@@ -24,7 +24,7 @@ def Th(na, pixel_num):
 def HHM(im_tgt, im_src):    # read image with pillow
     W, H = im_src.size
     pixel_num = H*W
-    im_tgt.resize([W, H])
+    im_tgt = im_tgt.resize([W, H])
     x = [i for i in range(256)]
 
     # get pixel number
@@ -34,8 +34,8 @@ def HHM(im_tgt, im_src):    # read image with pillow
     Sb = np.zeros((3, 256))
 
     for c in range(3):
-        na[c, :] = Image.fromarray(np.array(im_tgt)[:, :, c]).histogram()   # faster than np.histogram() aprox 0.02 s
-        nb[c, :] = Image.fromarray(np.array(im_src)[:, :, c]).histogram()
+        na[c, :] = im_tgt.split()[c].histogram()   # faster than np.histogram() aprox 0.02 s
+        nb[c, :] = im_src.split()[c].histogram()
 
     Sa[:, 0] = na[:, 0]
     Sb[:, 0] = nb[:, 0]
