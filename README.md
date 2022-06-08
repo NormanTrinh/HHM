@@ -1,7 +1,7 @@
 # `Converted to python`
 
 # Paper: [paper.pdf](paper.pdf)
-# Slide: [click here](https://vision.nju.edu.cn/_upload/article/files/c4/ea/a57509f4416c9d1944c271897f38/089240cc-4e07-4430-ac74-431fb645e54d.pdf)
+# Slide: [click here](slide.pdf)
 
 # Array camera color correction
 [main.m](main.m):   demo function of two images color correction, input: /6to7
