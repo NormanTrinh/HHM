@@ -1,7 +1,7 @@
 # `Converted to python`
 
 # Paper: [paper.pdf](paper.pdf)
-# Slide: [click here](slide.pdf)
+# Slide: [slide.pdf](slide.pdf)
 
 # Array camera color correction
 [main.m](main.m):   demo function of two images color correction, input: /6to7
