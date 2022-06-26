@@ -1,9 +1,9 @@
-# `Converted to python`
-
 # Paper: [paper.pdf](paper.pdf)
 # Slide: [slide.pdf](slide.pdf)
 
 # Array camera color correction
+[run.py](run.py): same as `main.m`
+
 [main.m](main.m):   demo function of two images color correction, input: /6to7
 
 [HHM.m](HHM.m):    input: two overlaps, output: map,(1X3X256)
@@ -14,7 +14,7 @@
 
 /data: N images and their overlaps, example data is in data1.rar and data2.rar
 
-[run.py](run.py): same as `main.m`
+
 
 # Terminal
 ```
