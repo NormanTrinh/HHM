@@ -116,15 +116,15 @@ def PA(mapp, input):
     return Image.fromarray(im)
 
 if __name__ == '__main__':
-    imsrc = Image.open('./6to7/6to7.png')
-    imtgt = Image.open('./6to7/7to6.png')
-    im = Image.open('./6to7/7.png')
+    imsrc = Image.open('../6to7/6to7.png')
+    imtgt = Image.open('../6to7/7to6.png')
+    im = Image.open('../6to7/7.png')
 
     start = time.time()
     mapp = HHM(imtgt, imsrc)
-    print('map time: ', time.time()-start)
+    print('Map time: ', time.time()-start)
 
     start = time.time()
     correct = PA(mapp, im)
-    print('color adjustment time: ', time.time()-start)
-    correct.save('./6to7/output7.png')
+    print('Color adjustment time: ', time.time()-start)
+    correct.save('../6to7/output7.png')
