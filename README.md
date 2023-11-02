@@ -36,3 +36,6 @@ python run.py
 `Map time`:  0.05622458457946777
 
 `Color adjustment time`:  0.0781698226928711
+
+# Todo
+- [ ] Visualize the result after using image stitching
