@@ -25,7 +25,7 @@ def HHM(im_tgt, im_src):    # read image with pillow
     W, H = im_src.size
     pixel_num = H*W
     im_tgt = im_tgt.resize([W, H])
-    x = [i for i in range(256)]
+    x = np.arange(256)
 
     # get pixel number
     na = np.zeros((3, 256))
@@ -99,7 +99,7 @@ def HHM(im_tgt, im_src):    # read image with pillow
             for a in range(region[c, num, 0], region[c, num, 1]+1):
                 mapp[c, a] = np.polyval(p, a)
 
-    x = [i for i in range(256)]
+    x = np.arange(256)
     # smooth with savgol_filter
     mapp[0, :] = savgol_filter(mapp[0, x], 15, 1)
     mapp[1, :] = savgol_filter(mapp[1, x], 15, 1)
